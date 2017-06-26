@@ -22,3 +22,16 @@ def calculate_node_flow(edge_flow, start_nodes=[0, 0, 1, 1, 1, 2, 2, 3, 4],
 
 node_flow = calculate_node_flow(edge_flow=[0,5,   3,   4,   0,   2,   0,  14,   0])
 print(node_flow)
+
+
+def sort_dataset(x):
+    x_new = np.vstack({tuple(row) for row in x})
+    return x_new
+
+x = np.loadtxt('x_data_set')
+y = np.loadtxt('y_data_set')
+x_new = sort_dataset(x)
+y_new = sort_dataset(y)
+print(np.shape(sort_dataset(x)))
+print(y_new)
+print(x_new)

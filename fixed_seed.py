@@ -1,3 +1,4 @@
+from __future__ import division
 from keras.models import Sequential
 from keras.layers import Dense, Activation
 from keras.initializers import *
@@ -5,6 +6,7 @@ from keras.optimizers import *
 import numpy as np
 from Toolset import *
 import matplotlib.pyplot as plt
+
 
 
 num_of_neurons = range(10,100,10)
@@ -37,30 +39,42 @@ seed_iteration = 5
 
 d = np.zeros(seed_iteration)
 index = 0
-seed_range = range(1,100000,10000)
-num_of_seed = len(seed_range)
-result = np.ndarray(shape=(num_of_seed,seed_iteration),dtype=float)
+seed = 1
 
-adam = Adam(lr=0.01)
+adam = Adam(lr=0.005)
 
+def check_result(x, y):
+    if np.shape(x) == np.shape(y):
+        counter = 0
+        for j in range(np.shape(x)[0]):
+            if np.array_equal(x[j], y[j]) is True:
+                counter += 1
+        return counter
+    else:
+        raise ValueError('x and y must be same shape')
 fig =  plt.figure()
 
-for j, seed in enumerate(seed_range):
-    for i in range(seed_iteration):
-        np.random.seed(seed)
-        model = Sequential()
-        model.add(Dense(units=200, input_shape=(5,), kernel_initializer='random_normal', bias_initializer='random_normal', activation='relu'))
-        model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
-        model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
-        model.compile(loss='mean_squared_error',optimizer=adam)
-        history = model.fit(x_data_train, y_data_train, batch_size=128, epochs= 20)
-        loss = model.evaluate(x_data_test, y_data_test)
-        d[i] = history.history['loss'][-1]
-    result[j] = d
 
-    plt.plot(result[j])
+np.random.seed(seed)
+model = Sequential()
+model.add(Dense(units=200, input_shape=(5,), kernel_initializer='random_normal', bias_initializer='random_normal', activation='relu'))
+model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
+model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
+model.compile(loss='mean_squared_error',optimizer=adam)
+history = model.fit(x_data_train, y_data_train, batch_size=128, epochs=200)
 
-np.savetxt('varying seed, epoch = 50',result)
+loss= history.history['loss']
+
+predict=model.predict(x_data_test)
+
+round_predict = np.round(predict)
+
+counter = check_result(round_predict, y_data_test)
+
+print('total number of right prediction is {}'.format(counter))
+print('accuracy is ' + str(counter/number_of_test_data))
+
+plt.plot(loss)
 
 
 axes = plt.gca()
@@ -69,5 +83,4 @@ plt.xlabel('run the NN 5 times')
 plt.ylabel('loss')
 plt.show()
 
-test = model.evaluate(x_data_test,y_data_test)
-print('test loss is ', test)
+

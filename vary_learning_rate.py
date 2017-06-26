@@ -40,7 +40,7 @@ for i, lr in enumerate(learning_rate):
     model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
     model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
     model.compile(loss='mean_squared_error',optimizer=adam)
-    history = model.fit(x_data_train, y_data_train, batch_size=128, epochs= 20)
+    history = model.fit(x_data_train, y_data_train, batch_size=128, epochs=200)
     loss = model.evaluate(x_data_test, y_data_test)
     d[i] = history.history['loss'][-1]
 plt.plot(d)

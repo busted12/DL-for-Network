@@ -49,4 +49,4 @@ unit_costs = [4, 4, 2, 2, 6, 1, 3, 2, 3]
 
 G = to_nxgraph(start_nodes, end_nodes, capacities, unit_costs)
 
-print(G.edges())
+print(G.edge)
