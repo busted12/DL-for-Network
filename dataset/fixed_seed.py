@@ -33,7 +33,7 @@ d = np.zeros(seed_iteration)
 index = 0
 seed = 90001
 
-adam = Adam(lr=0.0005)
+adam = Adam(lr=0.005)
 
 
 def check_result(x, y):
@@ -75,18 +75,25 @@ def deviation_counter(x, y):
         raise ValueError('x and y must be same shape')
 
 
-
-
+# build neural network
 np.random.seed(seed)
 model = Sequential()
-model.add(Dense(units=100, input_shape=(5,), kernel_initializer='random_normal', bias_initializer='random_normal', activation='relu'))
-model.add(Dense(units=100, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
-model.add(Dense(units=100, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
+model.add(Dense(units=200, input_shape=(5,), kernel_initializer='random_normal', bias_initializer='random_normal', activation='relu'))
+model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
 model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
 model.compile(loss='mean_squared_error',optimizer=adam)
-history = model.fit(x_data_train, y_data_train, batch_size=128, epochs=3000)
+history = model.fit(x_data_train, y_data_train, validation_split=0.1, batch_size=512, epochs=200)
+loss = history.history['loss']
+val_loss = history.history['val_loss']
 
-# test loss
+# plot results
+fig = plt.figure()
+ax1 = fig.add_subplot(211)
+ax1.plot(range(0,200), val_loss, label= 'validation loss')
+ax1.plot(range(0,200), loss, label='loss')
+
+
+
 test_loss = model.evaluate(x_data_test, y_data_test)
 
 # calculate loss after rounding
@@ -96,13 +103,12 @@ round_predict = np.round(predict)
 counter = check_result(round_predict, y_data_test)
 dev = deviation_counter(round_predict, y_data_test)
 
-#
-plt.bar(range(0,len(dev)), dev)
-plt.xlabel('deviation')
-plt.ylabel('number of data points')
-plt.savefig('rounded results')
-plt.show()
-plt.close()
+ax2 = fig.add_subplot(212)
+ax2.bar(dev)
+ax2.xlabel('deviation')
+ax2.ylabel('number of samples')
+
+
 
 print(dev)
 print(len(dev))
