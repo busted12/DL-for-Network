@@ -89,7 +89,7 @@ history = model.fit(x_data_train, y_data_train, batch_size=128, epochs=200)
 # test loss
 test_loss = model.evaluate(x_data_test, y_data_test)
 
-# calculate loss after roungding
+# calculate loss after rounding
 loss= history.history['loss']
 predict=model.predict(x_data_test)
 round_predict = np.round(predict)
@@ -98,6 +98,9 @@ dev = deviation_counter(round_predict, y_data_test)
 
 #
 plt.bar(range(0,len(dev)), dev)
+plt.xlabel('deviation')
+plt.ylabel('number of data points')
+plt.savefig('rounded results')
 plt.show()
 plt.close()
 
