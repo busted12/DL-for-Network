@@ -33,7 +33,7 @@ d = np.zeros(seed_iteration)
 index = 0
 seed = 90001
 
-adam = Adam(lr=0.002)
+adam = Adam(lr=0.0005)
 
 
 def check_result(x, y):
@@ -84,7 +84,7 @@ model.add(Dense(units=100, kernel_initializer='random_normal', bias_initializer=
 model.add(Dense(units=100, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
 model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
 model.compile(loss='mean_squared_error',optimizer=adam)
-history = model.fit(x_data_train, y_data_train, batch_size=128, epochs=200)
+history = model.fit(x_data_train, y_data_train, batch_size=128, epochs=3000)
 
 # test loss
 test_loss = model.evaluate(x_data_test, y_data_test)
