@@ -31,9 +31,10 @@ seed_iteration = 5
 
 d = np.zeros(seed_iteration)
 index = 0
-seed = 90001
+seeds = range(1, 90001, 15000)
 
-adam = Adam(lr=0.005)
+
+learning_rate = np.linspace(0.01, 0.1, 10)
 
 
 def check_result(x, y):
@@ -75,22 +76,58 @@ def deviation_counter(x, y):
         raise ValueError('x and y must be same shape')
 
 
-# build neural network
-np.random.seed(seed)
-model = Sequential()
-model.add(Dense(units=200, input_shape=(5,), kernel_initializer='random_normal', bias_initializer='random_normal', activation='relu'))
-model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
-model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
-model.compile(loss='mean_squared_error',optimizer=adam)
-history = model.fit(x_data_train, y_data_train, validation_split=0.1, batch_size=512, epochs=200)
-loss = history.history['loss']
-val_loss = history.history['val_loss']
+loss_log = np.zeros(10)
+val_loss_log = np.zeros(10)
+
+
+for j, seed in enumerate(seeds):
+    for i, _lr in enumerate(learning_rate):
+        # build neural network
+        np.random.seed(seed)
+        adam = Adam(lr=_lr)
+        model = Sequential()
+        model.add(Dense(units=200, input_shape=(5,), kernel_initializer='truncated_normal', activation='relu'))
+        model.add(Dense(units=200, kernel_initializer='truncated_normal', activation='sigmoid'))
+        model.add(Dense(units=9, activation='relu', kernel_initializer='truncated_normal'))
+        model.compile(loss='mean_squared_error',optimizer=adam)
+        history = model.fit(x_data_train, y_data_train, validation_split=0.1, batch_size=512, epochs=2000)
+
+        # check loss
+        # loss is loss for each epoch
+        loss = history.history['loss']
+        # val_loss is the validation loss for each epoch
+        val_loss = history.history['val_loss']
+        plt.plot(loss, label='train_ loss')
+        plt.plot(val_loss, label='validation loss')
+
+        plt.legend()
+        plt.xlabel('epoch')
+        plt.ylabel('loss')
+        axes = plt.gca()
+        plt.title('learning ratea is {}.'.format(_lr))
+        plt.savefig(r'loss-vs-lr(truncated_normal,b=0)/learning rate is {}.'.format(_lr))
+        plt.close()
+
+        # check how many answers are real after rounding
+        '''
+        predict=model.predict(x_data_test)
+        round_predict = np.round(predict)
+        counter = check_result(round_predict, y_data_test)
+        dev1 = deviation_counter(round_predict, y_data_test)
+    
+        plt.bar(range(len(dev1)),dev1)
+        plt.xlabel('deviation')
+        plt.ylabel('number of samples')
+        plt.savefig(r'loss-vs-lr(truncated_normal,b=0)/histogramm with learning rate {}.'.format(_lr) )
+        plt.close()
+        '''
+
 
 # plot results
 fig = plt.figure()
 ax1 = fig.add_subplot(211)
-ax1.plot(range(0,200), val_loss, label= 'validation loss')
-ax1.plot(range(0,200), loss, label='loss')
+ax1.plot(range(0,200), val_loss_log, label= 'validation loss')
+ax1.plot(range(0,200), loss_log, label='loss')
 
 
 
