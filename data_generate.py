@@ -1,5 +1,5 @@
 import numpy as np
-from min_cost_flow import main1
+from min_cost_flow import main
 
 '''
 a = [1, 2, 3]
@@ -32,7 +32,7 @@ def generate_data(number_of_inputs):
         # convert the array to list to serve as input for MIN_Flow_Solver
         shuffled_list = balanced_array.tolist()
 
-        (flag, output) = main1(shuffled_list)
+        (flag, output) = main(shuffled_list)
         if flag == 1:
             counter = counter + 1
             x_data = np.vstack((x_data, balanced_array))
@@ -47,7 +47,7 @@ def generate_data(number_of_inputs):
     #print(d[1:counter+1, ])
     return x_data[1:counter+1, ], y_data[1:counter+1], counter
 
-#x = generate_data(500000)
-#np.savetxt('x_data_set', x[0])
-#np.savetxt('y_data_set', x[1])
-#print(x[2])
+x = generate_data(50000000)
+np.savetxt('x_data_set2', x[0])
+np.savetxt('y_data_set2', x[1])
+print(x[2])

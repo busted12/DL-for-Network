@@ -83,12 +83,12 @@ val_loss_log = np.zeros(10)
 np.random.seed(7)
 adam = Adam(lr=0.001)
 model = Sequential()
-model.add(Dense(units=200, input_shape=(5,), kernel_initializer='random_normal',bias_initializer='random_normal', activation='relu'))
+model.add(Dense(units=200, input_shape=(5,), kernel_initializer=random_normal(),bias_initializer='random_normal', activation='relu'))
 model.add(BatchNormalization())
 model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
 model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal',))
 model.compile(loss='mean_squared_error', optimizer=adam)
-history = model.fit(x_data_train, y_data_train, validation_split=0.1, batch_size=512, epochs=200)
+history = model.fit(x_data_train, y_data_train, validation_split=0.1, batch_size=512, epochs=2000)
 
 # check loss
 # loss is loss for each epoch
