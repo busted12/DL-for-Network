@@ -48,12 +48,11 @@ def main(supplies):
           min_cost_flow.Capacity(i),
           cost))
     return flag, min_cost_flow.Flow()
-
   else:
     print('There was an issue with the min cost flow input.')
     flag = 0
     return flag
 
 if __name__ == '__main__':
-  a, b = main(supplies = [20, 0, 0, -5, -15])
+  a, b = main([20, 0, 0, -5, -15])
   print(a, b)

@@ -14,7 +14,9 @@ def sort_dataset(x, y):
     return x_new, y_new
 
 
-def calculate_node_flow(start_nodes, end_nodes, edge_flow):
+def calculate_node_flow(edge_flow,
+                        start_nodes=[0, 0, 1, 1, 1, 2, 2, 3, 4],
+                        end_nodes= [1, 2, 2, 3, 4, 3, 4, 4, 2]):
     '''
     given the flow of each edge, calculate the net flow of the nodes
     '''
