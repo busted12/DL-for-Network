@@ -1,16 +1,29 @@
+import json
 import matplotlib.pyplot as plt
-import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
+from matplotlib import cm
 import numpy as np
 
+d2 = json.load(open("result.txt"))
 
-a = [1, 2, 3, 4]
-b = [4,3,3,1]
+learning_rate = d2['learning_rate']
+seed = d2['seed']
+drop_out_rate = d2['drop_out_rate']
+train_loss = d2['train_loss']
+val_loss = d2['val_loss']
 
-counter= 0
-for i,j in zip(a, b):
-    if i == j:
-        counter +=1
-print(counter)
+#a = np.vstack((learning_rate,seed))
+
+#print(a)
+print(drop_out_rate)
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+cm = plt.cm.get_cmap('brg')
+pic = ax.scatter(learning_rate, seed, drop_out_rate, c=val_loss, cmap=cm, s=300)
+ax.set_xlabel('Learning Rate')
+ax.set_ylabel('Seed')
+ax.set_zlabel('Dropout Rate')
+fig.colorbar(pic)
+plt.show()
+
