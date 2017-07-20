@@ -132,7 +132,7 @@ for i, drop_out_rate in enumerate(drop_out_rates):
     model.add(Dropout(rate=drop_out_rate))
     model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal'))
     model.compile(loss='mean_squared_error',optimizer=adam)
-    history = model.fit(x_data_train, y_data_train, validation_split=0.1, batch_size=512, epochs=20, verbose=1)
+    history = model.fit(x_data_train, y_data_train, validation_split=0.1, batch_size=512, epochs=200, verbose=1)
 
     # check loss
     # loss is loss for each epoch
@@ -150,7 +150,7 @@ plt.legend()
 plt.xlabel('drop out rate')
 plt.ylabel('loss')
 axes = plt.gca()
-plt.savefig('Dropout rate is 0.5.png')
+plt.savefig('Dropout_rate_vs_loss_with_pn=constant.png')
 plt.close()
 
 
