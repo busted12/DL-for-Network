@@ -24,6 +24,7 @@ pic = ax.scatter(learning_rate, seed, drop_out_rate, c=val_loss, cmap=cm, s=300)
 ax.set_xlabel('Learning Rate')
 ax.set_ylabel('Seed')
 ax.set_zlabel('Dropout Rate')
-fig.colorbar(pic)
+cb =fig.colorbar(pic)
+cb.set_label('validation loss')
 plt.show()
 

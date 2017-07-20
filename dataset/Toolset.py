@@ -160,7 +160,7 @@ def check_feasible(edge_flows, real_node_flows, edge_capacities=[15, 8, 20, 4, 1
     1. capacity constraint is satisfied.
     2. node flow is satisfied
     note: node flow is calculated given edge flow and network structure
-    :param x: x is a n by m matrix, where each row is the edge flow of a specific case
+    :param edge_flows: edge:flows is a n by m matrix, where each row is the edge flow of a specific case
     :param edge_capacities:
     :return:
     '''
@@ -190,3 +190,30 @@ def relative_deviation(x, y):
     else:
         raise ValueError('x and y must have same shape')
 
+
+def evaluate_deviation(x, y):
+    '''
+    use relative metric to evaluate the performance of the algorithm after rounding
+    1st, it evaluates results which are beyond the rounding -1/+1 range.
+
+
+    :param x: to
+    :param y:
+    :return: counter
+    '''
+    if np.shape(x) == np.shape(y):
+        num_of_rows = np.shape(x)[0]
+        floored = np.floor(x)
+        diff = np.subtract(y, floored)
+        counter = 0
+        # wrong rows are rows beyond the rounding range
+        wrong_row_dev = np.zeros(9)
+        for i, row in enumerate(diff):
+            if np.max(row) > 1:
+                wrong_row_dev = np.vstack((wrong_row_dev,row))
+                counter += 1
+        wrong_row_dev = wrong_row_dev[1:,]
+        return counter, wrong_row_dev
+
+    else:
+        raise ValueError('x and y must have same shape')

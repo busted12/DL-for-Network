@@ -34,22 +34,20 @@ print(number_of_test_data)
 
 
 
-
-
 loss_log = np.zeros(10)
 val_loss_log = np.zeros(10)
 
-adam = Adam(lr=0.003)
-
+adam = Adam(lr=0.0025)
 np.random.seed(1)
 model = Sequential()
-model.add(Dense(units=400, input_shape=(5,), kernel_initializer='random_normal', activation='relu'))
+model.add(Dense(units=200, input_shape=(5,), kernel_initializer='random_normal', activation='relu'))
 model.add(Dropout(rate=0))
-model.add(Dense(units=400, kernel_initializer='random_normal', activation='sigmoid'))
-model.add(Dropout(rate=0.0))
+model.add(Dense(units=200, kernel_initializer='random_normal', activation='sigmoid'))
+model.add(Dropout(rate=0))
+model.add(Dropout(rate=0))
 model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal'))
 model.compile(loss='mean_squared_error',optimizer=adam)
-history = model.fit(x_data_train, y_data_train, validation_split=0.3, batch_size=512, epochs=20, verbose=1)
+history = model.fit(x_data_train, y_data_train, validation_split=0.2, batch_size=512, epochs=300, verbose=1)
 
 # check loss
 # loss is loss for each epoch
@@ -81,6 +79,10 @@ counter2 = round_counter(predict, y_data_test)
 print('exact right answer is: ' + str(counter))
 print('Answer with in rounding range is: ' + str(counter2))
 
+counter3, wrong_row = evaluate_deviation(predict,y_data_test)
+print('%s cases are beyond +/- 1 range' % counter3)
+
+
 dev1 = deviation_counter(round_predict, y_data_test)
 
 
@@ -96,15 +98,19 @@ d = capacity_diff.max()
 print('the biggest capacity excess is ' + str(d))
 
 
+unique, counts = np.unique(wrong_row.flatten(), return_counts=True)
+
+print(np.asarray((unique, counts)).T)
+
 nr_feasible = check_feasible(round_predict, x_data_test)
 print('number of feasible answer is:', nr_feasible)
-
-
-# plot
-plt.bar(range(len(dev1)),dev1)
-plt.xlabel('deviation')
-plt.ylabel('number of samples')
+plt.hist(wrong_row.flatten(), bins=np.arange(wrong_row.min(), wrong_row.max()+1))
 plt.show()
+# plot
+#plt.bar(range(len(dev1)),dev1)
+#plt.xlabel('deviation')
+#plt.ylabel('number of samples')
+#plt.show()
 
 
 
