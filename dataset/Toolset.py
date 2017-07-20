@@ -172,3 +172,21 @@ def check_feasible(edge_flows, real_node_flows, edge_capacities=[15, 8, 20, 4, 1
         if np.array_equal(node_flow,real_node_flow) and capacity_diff.max()<=0:
             counter += 1
     return counter
+
+
+def relative_deviation(x, y):
+    if np.shape(x) == np.shape(y):
+        num_of_rows = np.shape(x)[0]
+        floored = np.floor(x)
+        diff = np.subtract(y, floored)
+        counter = 0
+        dev_counter = 0
+        for i, row in enumerate(diff):
+            if np.max(row) >= 0 and np.max(row) <= 1:
+                counter += 1
+            else:
+                dev_counter += 1
+            return counter, dev_counter
+    else:
+        raise ValueError('x and y must have same shape')
+
