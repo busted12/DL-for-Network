@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f345ea0-bc9d-4c74-9ac3-f81dabc17e5b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dataset/Toolset.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dropout rate is 0.5.png" afterPath="$PROJECT_DIR$/Dropout rate is 0.5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Toolset.py" afterPath="$PROJECT_DIR$/Toolset.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dataset/fixed_seed.py" afterPath="$PROJECT_DIR$/dataset/fixed_seed.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loss-vs-seed/loss_vs_dor.py" afterPath="$PROJECT_DIR$/loss-vs-seed/loss_vs_dor.py" />
-    </list>
+    <list default="true" id="7f345ea0-bc9d-4c74-9ac3-f81dabc17e5b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +14,7 @@
     <SUITE FILE_PATH="coverage/MA_python$Unittests_in_test_py.coverage" NAME="Unittests in test.py Coverage Results" MODIFIED="1498242768340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MA_python$min_cost_flow.coverage" NAME="min_cost_flow Coverage Results" MODIFIED="1499452559951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MA_python$loss_vs_initializer.coverage" NAME="loss_vs_initializer Coverage Results" MODIFIED="1498509828300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MA_python$1.coverage" NAME="1 Coverage Results" MODIFIED="1500564549364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MA_python$1.coverage" NAME="1 Coverage Results" MODIFIED="1500571526260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MA_python$data_generate.coverage" NAME="data_generate Coverage Results" MODIFIED="1499452302676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MA_python$3.coverage" NAME="3 Coverage Results" MODIFIED="1500503868415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MA_python$auto_encoder.coverage" NAME="auto_encoder Coverage Results" MODIFIED="1497910721814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -79,20 +72,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dropout_rate_vs_loss_with_pn=constant_val_split=0.3.png" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/loss-vs-seed/Dropout_rate_vs_loss_with_pn=constant_val_split=0.3.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dropout_rate_vs_loss_with_pn=constant.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loss-vs-seed/Dropout_rate_vs_loss_with_pn=constant.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Dropout rate is 0.5.png" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loss-vs-seed/Dropout rate is 0.5.png">
           <provider selected="true" editor-type-id="images">
@@ -136,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -302,7 +281,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.loss_vs_dor">
+  <component name="RunManager" selected="Python.1">
     <configuration default="false" name="fixed_seed" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -555,9 +534,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.loss_vs_dor" />
-        <item index="1" class="java.lang.String" itemvalue="Python.fixed_seed" />
-        <item index="2" class="java.lang.String" itemvalue="Python.1" />
+        <item index="0" class="java.lang.String" itemvalue="Python.1" />
+        <item index="1" class="java.lang.String" itemvalue="Python.loss_vs_dor" />
+        <item index="2" class="java.lang.String" itemvalue="Python.fixed_seed" />
         <item index="3" class="java.lang.String" itemvalue="Python.3" />
         <item index="4" class="java.lang.String" itemvalue="Python.loss_vs_lr&amp;seed" />
       </list>
@@ -588,7 +567,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1602" height="1176" extended-state="6" />
+    <frame x="-1" y="25" width="1602" height="1176" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.218125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -837,16 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vary_optimizer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -908,6 +877,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/loss-vs-seed/Dropout_rate_vs_loss_with_pn=constant.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loss-vs-seed/Dropout_rate_vs_loss_with_pn=constant_val_split=0.3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/loss-vs-seed/loss_vs_dor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
@@ -918,14 +897,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loss-vs-seed/Dropout_rate_vs_loss_with_pn=constant.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loss-vs-seed/Dropout_rate_vs_loss_with_pn=constant_val_split=0.3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
