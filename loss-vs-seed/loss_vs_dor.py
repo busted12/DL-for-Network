@@ -116,23 +116,23 @@ def round_counter2(x, y):
         raise ValueError('x and y must have same shape')
 
 
-loss_log = np.zeros(9)
-val_loss_log = np.zeros(9)
+loss_log = np.zeros(10)
+val_loss_log = np.zeros(10)
 
 adam = Adam(lr=0.003)
 
-drop_out_rates = np.arange(0.1, 1, 0.1)
+drop_out_rates = np.arange(0, 1, 0.1)
 
 for i, drop_out_rate in enumerate(drop_out_rates):
     np.random.seed(1)
     model = Sequential()
-    model.add(Dense(units=int(200/drop_out_rate), input_shape=(5,), kernel_initializer='random_normal', activation='relu'))
+    model.add(Dense(units=int(200/(1-drop_out_rate)), input_shape=(5,), kernel_initializer='random_normal', activation='relu'))
     model.add(Dropout(rate=drop_out_rate))
-    model.add(Dense(units=int(200/drop_out_rate), kernel_initializer='random_normal', activation='sigmoid'))
+    model.add(Dense(units=int(200/(1-drop_out_rate)), kernel_initializer='random_normal', activation='sigmoid'))
     model.add(Dropout(rate=drop_out_rate))
     model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal'))
     model.compile(loss='mean_squared_error',optimizer=adam)
-    history = model.fit(x_data_train, y_data_train, validation_split=0.3, batch_size=512, epochs=20, verbose=1)
+    history = model.fit(x_data_train, y_data_train, validation_split=0.28, batch_size=512, epochs=200, verbose=1)
 
     # check loss
     # loss is loss for each epoch
@@ -150,7 +150,7 @@ plt.legend()
 plt.xlabel('drop out rate')
 plt.ylabel('loss')
 axes = plt.gca()
-plt.savefig('Dropout_rate_vs_loss_with_pn=constant_val_split=0.3.png')
+plt.savefig('Dropout_rate_vs_loss_with_pn=constant_val_split=0.28.png')
 plt.close()
 
 

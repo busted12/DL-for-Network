@@ -4,7 +4,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 import numpy as np
 
-d2 = json.load(open("result.txt"))
+d2 = json.load(open("n=constant_narror_lr_range.txt"))
 
 learning_rate = d2['learning_rate']
 seed = d2['seed']

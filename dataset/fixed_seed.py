@@ -40,14 +40,14 @@ val_loss_log = np.zeros(10)
 adam = Adam(lr=0.0025)
 np.random.seed(1)
 model = Sequential()
-model.add(Dense(units=200, input_shape=(5,), kernel_initializer='random_normal', activation='relu'))
-model.add(Dropout(rate=0))
+model.add(Dense(units=400, input_shape=(5,), kernel_initializer='random_normal', activation='relu'))
+model.add(Dropout(rate=0.5))
 model.add(Dense(units=200, kernel_initializer='random_normal', activation='sigmoid'))
-model.add(Dropout(rate=0))
+model.add(Dropout(rate=0.5))
 model.add(Dropout(rate=0))
 model.add(Dense(units=9, activation='relu', kernel_initializer='random_normal'))
 model.compile(loss='mean_squared_error',optimizer=adam)
-history = model.fit(x_data_train, y_data_train, validation_split=0.2, batch_size=512, epochs=300, verbose=1)
+history = model.fit(x_data_train, y_data_train, validation_split=0.3, batch_size=512, epochs=300, verbose=1)
 
 # check loss
 # loss is loss for each epoch
