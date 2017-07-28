@@ -54,9 +54,9 @@ for i,lr in enumerate(np.unique(learning_rate)):
 
 
 fig, ax = plt.subplots()
-cax = ax.imshow(m2_average_matrix,aspect='auto',interpolation='nearest', extent=[0.001, 0.01, 0, 0.9])
+cax = ax.imshow(m2_variance_matrix,aspect='auto',interpolation='nearest', extent=[0.001, 0.01, 0, 0.9])
 cbar = fig.colorbar(cax)
-cbar.set_label('Cbar Label Here')
+cbar.set_label('variance')
 plt.title('200 neurons, 3 hidden layers, metric2 heatmap')
 plt.ylabel('dropout rate')
 plt.xlabel('learning rate')
