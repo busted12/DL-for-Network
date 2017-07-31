@@ -4,27 +4,16 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 import numpy as np
 
-d2 = json.load(open("n=constant_narror_lr_range.txt"))
+d2 = json.load(open("result_net_structure.txt"))
 
-learning_rate = d2['learning_rate']
-seed = d2['seed']
-drop_out_rate = d2['drop_out_rate']
-train_loss = d2['train_loss']
-val_loss = d2['val_loss']
+accuracy = d2['accuracy']
+metric2 = d2['metric2']
 
-#a = np.vstack((learning_rate,seed))
+print(len(accuracy[0:500]))
 
-#print(a)
-print(drop_out_rate)
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+print(len(metric2[0:500]))
 
-cm = plt.cm.get_cmap('brg')
-pic = ax.scatter(learning_rate, seed, drop_out_rate, c=val_loss, cmap=cm, s=300)
-ax.set_xlabel('Learning Rate')
-ax.set_ylabel('Seed')
-ax.set_zlabel('Dropout Rate')
-cb =fig.colorbar(pic)
-cb.set_label('validation loss')
+plt.scatter(metric2,accuracy)
+plt.xlabel('M2')
+plt.ylabel('accuracy')
 plt.show()
-
