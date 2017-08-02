@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def sort_dataset(x, y):
+def remove_dup_dataset(x, y):
     '''
     sort out duplicate data
     '''
@@ -122,6 +122,28 @@ def round_counter(x, y):
         raise ValueError('x and y must have same shape')
 
 
+def round_counter2(x, y):
+    '''
+    count how many predictions are within the round-up and off region,
+
+    :param x: n * m array, n is the number of examples.
+    :param y: n * m array, n is the number of examples.
+    :return: counter
+    '''
+
+    if np.shape(x) == np.shape(y):
+        num_of_rows = np.shape(x)[0]
+        floored = np.floor(x)
+        diff = np.subtract(y, floored)
+        counter = 0
+        for row in diff:
+            if np.max(row) >= 1 and np.max(row) <= 3:
+                counter += 1
+        return counter
+    else:
+        raise ValueError('x and y must have same shape')
+
+
 def calculate_node_for_all(x, nr_of_nodes):
     '''
     give a set of edge flow, calculate its correspdonding node flow
@@ -172,3 +194,4 @@ def check_feasible(edge_flows, real_node_flows, edge_capacities=[15, 8, 20, 4, 1
         if np.array_equal(node_flow,real_node_flow) and capacity_diff.max()<=0:
             counter += 1
     return counter
+
