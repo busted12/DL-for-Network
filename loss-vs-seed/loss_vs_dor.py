@@ -1,12 +1,12 @@
 from __future__ import division
-from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout
-from keras.initializers import *
-from keras.optimizers import *
-import numpy as np
-from Toolset import *
+
 import matplotlib.pyplot as plt
 
+import numpy as np
+from Toolset import *
+from keras.layers import Dense, Dropout
+from keras.models import Sequential
+from keras.optimizers import *
 
 # Network structure
 # start_nodes = [0, 0, 1, 1, 1, 2, 2, 3, 4]
