@@ -212,8 +212,8 @@ def main(h=[20, 15, 20, 20, 25, 15]):
             flag = 1
             for i in range(num_demand_pair):
                 for j in range(num_edge):
-                    print(variable_matrix[i][j].solution_value())
                     edge_flow[j] += variable_matrix[i][j].solution_value()
+                    print(edge_flow)
 
             return [flag, edge_flow]
 
