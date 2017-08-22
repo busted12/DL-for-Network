@@ -36,8 +36,37 @@ for i in range(len(DG.edge)):
         unit_costs.append(DG.edge[str(i)][key]['unit cost'])
 
 
-print(start_nodes)
-print(end_nodes)
-print(capacities)
-print(unit_costs)
 
+nodes = sorted(DG.nodes())
+edges = sorted(DG.edges())
+print(nodes)
+print(edges)
+
+
+def find_adjacent_edge(nodes, edges):
+    out_ind_for_all_nodes = []
+    in_ind_for_all_nodes = []
+    for node in nodes:
+        out_ind = []
+        in_ind = []
+        for edge in edges:
+            if edge[0] == node:
+                out_ind.append(edges.index(edge))
+
+        for edge in edges:
+            if edge[1] == node:
+                in_ind.append(edges.index(edge))
+        out_ind_for_all_nodes.append(out_ind)
+        in_ind_for_all_nodes.append(in_ind)
+    return out_ind_for_all_nodes, in_ind_for_all_nodes
+
+out_edges, in_edges = find_adjacent_edge(nodes,edges)
+
+print(out_edges)
+for i in nodes:
+    print(i)
+    print(out_edges[int(i)])
+
+for i in nodes:
+    print(i)
+    print(in_edges[int(i)])

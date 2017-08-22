@@ -11,7 +11,7 @@ def main(h=[20, 15, 20, 20, 25, 15]):
     # we use edge flow representation of the solution
 
 
-    capacity = 100
+    capacity = 45
     cost = 1
     if len(h) == 6:
 
@@ -167,6 +167,8 @@ def main(h=[20, 15, 20, 20, 25, 15]):
         constraint18.SetCoefficient(variable_matrix[5][2], -1)
         constraint18.SetCoefficient(variable_matrix[5][3], 1)
 
+
+
         # capacity constraint for edge 0
         constraint19 = solver.Constraint(-solver.infinity(), capacity)
         constraint19.SetCoefficient(variable_matrix[0][0], 1)
@@ -213,7 +215,7 @@ def main(h=[20, 15, 20, 20, 25, 15]):
             for i in range(num_demand_pair):
                 for j in range(num_edge):
                     edge_flow[j] += variable_matrix[i][j].solution_value()
-                    print(edge_flow)
+                print(edge_flow)
 
             return [flag, edge_flow]
 
