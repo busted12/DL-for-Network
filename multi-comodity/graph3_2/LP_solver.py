@@ -43,11 +43,11 @@ def main(h=[20, 15, 20, 20, 25, 15]):
         constraint1.SetCoefficient(variable_matrix[0][1],-1)
 
         # node B
-        constraint2 = solver.Constraint(-h[0], -h[0])
-        constraint2.SetCoefficient(variable_matrix[0][0], -1)
-        constraint2.SetCoefficient(variable_matrix[0][1], 1)
-        constraint2.SetCoefficient(variable_matrix[0][2], 1)
-        constraint2.SetCoefficient(variable_matrix[0][3], -1)
+        constraint1 = solver.Constraint(-h[0], -h[0])
+        constraint1.SetCoefficient(variable_matrix[0][0], -1)
+        constraint1.SetCoefficient(variable_matrix[0][1], 1)
+        constraint1.SetCoefficient(variable_matrix[0][2], 1)
+        constraint1.SetCoefficient(variable_matrix[0][3], -1)
 
         # node C
         constraint3 = solver.Constraint(0, 0)

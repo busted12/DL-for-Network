@@ -10,6 +10,10 @@ def main(supplies):
   # between each pair. For instance, the arc from node 0 to node 1 has a
   # capacity of 15 and a unit cost of 4.
 
+  load_graph()
+
+  load_supply()
+
   start_nodes = [0, 0, 1, 1, 1, 2, 2, 3, 4]
   end_nodes = [1, 2, 2, 3, 4, 3, 4, 4, 2]
   capacities = [15, 8, 20, 4, 10, 15, 5, 20, 4]
