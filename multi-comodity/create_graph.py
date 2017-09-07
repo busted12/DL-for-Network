@@ -4,14 +4,19 @@ import matplotlib.pyplot as plt
 import pygraphviz as pgv
 import os
 
-edge_list = u'/home/chen/MA_python/multi-comodity/Graphs/4-6'
+dir =  u'/home/chen/MA_python/multi-comodity/Graphs/'
+graph = u'4-6'
 
-G = nx.read_edgelist(edge_list)
-DG = G.to_directed()
 
-A = nx.nx_agraph.to_agraph(DG)
-A.layout(prog='circo')
-A.draw('file.png')
+def draw_graph(edgg_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graphs/'):
+    G = nx.read_edgelist(dir + edgg_list_file)
+    DG = G.to_directed()
+
+    A = nx.nx_agraph.to_agraph(DG)
+    A.layout(prog='circo')
+    A.draw(edgg_list_file + '.png')
+
+draw_graph('3-3')
 
 
 
