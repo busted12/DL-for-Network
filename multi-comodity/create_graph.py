@@ -16,7 +16,7 @@ def draw_graph(edgg_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graph
     A.layout(prog='circo')
     A.draw(edgg_list_file + '.png')
 
-draw_graph('3-3')
+draw_graph('4-6')
 
 
 
