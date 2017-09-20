@@ -1,9 +1,9 @@
 from __future__ import division
-
 import numpy as np
 from keras.layers import Dense
 from keras.models import Sequential
 from keras.optimizers import *
+import matplotlib.pyplot as plt
 
 from Vlink_Reconf.Vlink import Toolset
 
@@ -12,6 +12,7 @@ class NeuralNetwork():
     def __init__(self, x_file, y_file):
         self.x_file = x_file
         self.y_file = y_file
+        self.history = None
     # load data
 
     def run(self):
@@ -34,7 +35,7 @@ class NeuralNetwork():
 
         number_of_test_data = np.shape(x_data_test)[0]
 
-        adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.00)
+        adam = Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.00)
 
         np.random.seed(20001)
         model = Sequential()
@@ -42,9 +43,8 @@ class NeuralNetwork():
         model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
         model.add(Dense(units=output_dim, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
         model.compile(loss='mean_squared_error',optimizer=adam)
-        history = model.fit(x_data_train, y_data_train, batch_size=128, validation_split= 0.3 , epochs=10000)
-
-
+        history = model.fit(x_data_train, y_data_train, batch_size=128, validation_split= 0.3 , epochs=20000)
+        self.history = history
         predict = model.predict(x_data_test)
 
 
@@ -64,8 +64,16 @@ class NeuralNetwork():
 
         print(M3)
 
+    def plot(self):
+        plt.plot(self.history.history['val_loss'])
+        plt.plot(self.history.history['loss'])
+        plt.show()
 
-x = u'/home/chen/MA_python/multi-comodity/Dataset/5-6-x'
-y = u'/home/chen/MA_python/multi-comodity/Dataset/5-6-y'
 
 
+x = u'/home/chen/MA_python/Vlink_Reconf/Vlink/demand_vector_4_4'
+y = u'/home/chen/MA_python/Vlink_Reconf/Vlink/vlink_vector_4_4'
+
+nn = NeuralNetwork(x,y)
+nn.run()
+nn.plot()

@@ -14,10 +14,14 @@ def draw_graph(edgg_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graph
 
     A = nx.nx_agraph.to_agraph(DG)
     A.layout(prog='circo')
-    A.draw(edgg_list_file + '.png')
+    A.draw(dir+ edgg_list_file + '.pdf')
 
 draw_graph('4-6')
-
+draw_graph('4-5')
+draw_graph('4-4')
+draw_graph('4-3')
+draw_graph('3-3')
+draw_graph('3-2')
 
 
 
