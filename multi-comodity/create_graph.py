@@ -5,23 +5,23 @@ import pygraphviz as pgv
 import os
 
 dir =  u'/home/chen/MA_python/multi-comodity/Graphs/'
-graph = u'4-6'
 
 
-def draw_graph(edgg_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graphs/'):
-    G = nx.read_edgelist(dir + edgg_list_file)
-    DG = G.to_directed()
+def draw_graph(edge_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graphs/'):
+    DG = nx.read_edgelist(dir + edge_list_file,create_using=nx.DiGraph())
+
+    #DG = G.to_directed()
+    #DG.remove_edge(3,2)
 
     A = nx.nx_agraph.to_agraph(DG)
     A.layout(prog='circo')
-    A.draw(dir+ edgg_list_file + '.pdf')
+    A.draw(dir+ edge_list_file + '.pdf')
 
-draw_graph('4-6')
-draw_graph('4-5')
-draw_graph('4-4')
-draw_graph('4-3')
-draw_graph('3-3')
-draw_graph('3-2')
-
-
-
+# draw_graph('4-6')
+# draw_graph('4-5')
+# draw_graph('4-4')
+# draw_graph('4-3')
+# draw_graph('3-3')
+# draw_graph('3-2')
+draw_graph('4-5-2')
+draw_graph('4-6-2')

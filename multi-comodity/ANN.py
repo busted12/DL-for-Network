@@ -35,7 +35,7 @@ class NeuralNetwork():
 
         number_of_test_data = np.shape(x_data_test)[0]
 
-        adam = Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.00)
+        adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.00)
 
         np.random.seed(20001)
         model = Sequential()
@@ -43,7 +43,7 @@ class NeuralNetwork():
         model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
         model.add(Dense(units=output_dim, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
         model.compile(loss='mean_squared_error',optimizer=adam)
-        history = model.fit(x_data_train, y_data_train, batch_size=128, validation_split= 0.3 , epochs=20000)
+        history = model.fit(x_data_train, y_data_train, batch_size=128, validation_split= 0.3 , epochs=2000)
         self.history = history
         predict = model.predict(x_data_test)
 
@@ -69,10 +69,8 @@ class NeuralNetwork():
         plt.plot(self.history.history['loss'])
         plt.show()
 
-
-
-x = u'/home/chen/MA_python/Vlink_Reconf/Vlink/demand_vector_4_4'
-y = u'/home/chen/MA_python/Vlink_Reconf/Vlink/vlink_vector_4_4'
+x = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-1-x'
+y = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-1-y'
 
 nn = NeuralNetwork(x,y)
 nn.run()

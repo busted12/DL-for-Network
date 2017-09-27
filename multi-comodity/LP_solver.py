@@ -74,8 +74,7 @@ def find_adjacent_edge(nodes, edges):
 
 def load_graph(graph):
     fh = open(graph, 'rb')
-    G = nx.read_edgelist(fh)
-    DG = G.to_directed()
+    DG = nx.read_edgelist(fh,create_using=nx.DiGraph())
 
     nodes = sorted(DG.nodes())
     edges = sorted(DG.edges())

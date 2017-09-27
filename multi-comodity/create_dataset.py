@@ -9,8 +9,7 @@ def create_datset(number_of_trials,graph):
     :return:
     '''
     fh = open(graph, 'rb')
-    G = nx.read_edgelist(fh)
-    DG = G.to_directed()
+    DG = nx.read_edgelist(fh, create_using=nx.DiGraph())
 
     nodes = sorted(DG.nodes())
     edges = sorted(DG.edges())
@@ -38,10 +37,10 @@ def create_datset(number_of_trials,graph):
 
     return x_data[1:counter+1, ], y_data[1:counter+1, ]
 
-graph = u'/home/chen/MA_python/multi-comodity/Graphs/3-3'
+graph = u'/home/chen/MA_python/multi-comodity/Graphs/4-6-2'
 x, y = create_datset(40000, graph)
 x_new, y_new = remove_dup_dataset(x, y)
 
 
-np.savetxt(u'/home/chen/MA_python/multi-comodity/Dataset/3-3-x', x_new)
-np.savetxt(u'/home/chen/MA_python/multi-comodity/Dataset/3-3-y', y_new)
+np.savetxt(u'/home/chen/MA_python/multi-comodity/Dataset/4-6-2-x', x_new)
+np.savetxt(u'/home/chen/MA_python/multi-comodity/Dataset/4-6-2-y', y_new)
