@@ -4,6 +4,8 @@ from keras.layers import Dense
 from keras.models import Sequential
 from keras.optimizers import *
 import matplotlib.pyplot as plt
+from datetime import datetime
+from keras.layers.normalization import BatchNormalization
 
 from Vlink_Reconf.Vlink import Toolset
 
@@ -37,13 +39,15 @@ class NeuralNetwork():
 
         adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.00)
 
-        np.random.seed(20001)
+        np.random.seed(52001)
         model = Sequential()
-        model.add(Dense(units=200, input_shape=(input_dim,), kernel_initializer='random_normal', bias_initializer='random_normal', activation='relu'))
-        model.add(Dense(units=200, kernel_initializer='random_normal', bias_initializer='random_normal', activation='sigmoid'))
-        model.add(Dense(units=output_dim, activation='relu', kernel_initializer='random_normal', bias_initializer='random_normal'))
+        model.add(Dense(units=200, input_shape=(input_dim,), kernel_initializer='glorot_normal', bias_initializer='zero', activation='relu'))
+        #model.add(BatchNormalization(axis=-1, epsilon=0.02, momentum=0.97))
+        model.add(Dense(units=200, kernel_initializer='glorot_normal', bias_initializer='zero', activation='relu'))
+        #model.add(BatchNormalization(axis=-1, epsilon=0.02, momentum=0.97))
+        model.add(Dense(units=output_dim, activation='relu', kernel_initializer='glorot_normal', bias_initializer='zero'))
         model.compile(loss='mean_squared_error',optimizer=adam)
-        history = model.fit(x_data_train, y_data_train, batch_size=128, validation_split= 0.3 , epochs=2000)
+        history = model.fit(x_data_train, y_data_train, batch_size=128, validation_split= 0.3 , epochs=5000)
         self.history = history
         predict = model.predict(x_data_test)
 
@@ -63,15 +67,44 @@ class NeuralNetwork():
         M3 = np.sum(metric3) / number_of_test_data
 
         print(M3)
+        return  accuracy
 
     def plot(self):
         plt.plot(self.history.history['val_loss'])
         plt.plot(self.history.history['loss'])
         plt.show()
 
-x = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-1-x'
-y = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-1-y'
+# x1 = u'/home/chen/MA_python/multi-comodity/Dataset/4-6-2-x'
+# y1 = u'/home/chen/MA_python/multi-comodity/Dataset/4-6-2-y'
+#
+# nn = NeuralNetwork(x1,y1)
+# a1 = nn.run()
+#
+# x2 = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-1-x'
+# y2 = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-1-y'
+#
+# nn = NeuralNetwork(x2,y2)
+# a2 = nn.run()
+#
+#
+# x3 = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-2-x'
+# y3 = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-2-y'
+#
+# nn = NeuralNetwork(x3,y3)
+# a3 = nn.run()
 
-nn = NeuralNetwork(x,y)
-nn.run()
-nn.plot()
+x3 = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-v3-x'
+y3 = u'/home/chen/MA_python/multi-comodity/Dataset/4-5-v3-y'
+
+
+start_time = datetime.now()
+
+nn = NeuralNetwork(x3,y3)
+a3 = nn.run()
+
+end_time = datetime.now()
+duration = end_time - start_time
+
+
+print('4-5-v3Graph', a3)
+print duration

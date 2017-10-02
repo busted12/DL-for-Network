@@ -2,7 +2,7 @@ from LP_solver import *
 from Vlink_Reconf.Vlink.Toolset import *
 
 
-def create_datset(number_of_trials,graph):
+def create_datset(number_of_trials, graph):
     '''
     feed the solver with number_of_trials randomly generated arrays
     :param number_of_trials:
@@ -37,10 +37,16 @@ def create_datset(number_of_trials,graph):
 
     return x_data[1:counter+1, ], y_data[1:counter+1, ]
 
-graph = u'/home/chen/MA_python/multi-comodity/Graphs/4-6-2'
-x, y = create_datset(40000, graph)
+graph = '4-5-v3'
+
+graph_root = u'/home/chen/MA_python/multi-comodity/Graphs/'
+graph_dir = graph_root + graph
+x, y = create_datset(40000, graph_dir)
 x_new, y_new = remove_dup_dataset(x, y)
 
+file_root = u'/home/chen/MA_python/multi-comodity/Dataset/'
+x_data_dir = file_root + graph + '-x'
+y_data_dir = file_root + graph + '-y'
 
-np.savetxt(u'/home/chen/MA_python/multi-comodity/Dataset/4-6-2-x', x_new)
-np.savetxt(u'/home/chen/MA_python/multi-comodity/Dataset/4-6-2-y', y_new)
+np.savetxt(x_data_dir, x_new)
+np.savetxt(y_data_dir, y_new)

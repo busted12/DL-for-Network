@@ -101,7 +101,7 @@ def main(demand_matrix, graph='10nodes.edgelist'):
     num_edge = len(edges)
 
     # set capacity and cost
-    capacity = 300
+    capacity = 1000
     cost = 1
 
     # Instantiate a mixed-integer solver, naming it SolveIntegerProblem.

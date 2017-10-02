@@ -50,8 +50,6 @@ def to_list_form(G):
         raise TypeError('G should be a networkx graph ')
 
 
-
-
 start_nodes = [0, 0, 1, 1, 1, 2, 2, 3, 4]
 end_nodes = [1, 2, 2, 3, 4, 3, 4, 4, 2]
 capacities = [15, 8, 20, 4, 10, 15, 5, 20, 4]

@@ -23,5 +23,6 @@ def draw_graph(edge_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graph
 # draw_graph('4-3')
 # draw_graph('3-3')
 # draw_graph('3-2')
-draw_graph('4-5-2')
-draw_graph('4-6-2')
+# draw_graph('4-5-2')
+# draw_graph('4-6-2')
+draw_graph('4-5-v3')
