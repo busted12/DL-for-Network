@@ -15,7 +15,7 @@ def draw_graph(edge_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graph
 
     A = nx.nx_agraph.to_agraph(DG)
     A.layout(prog='circo')
-    A.draw(dir+ edge_list_file + '.pdf')
+    A.draw(dir+ edge_list_file + '.png')
 
 # draw_graph('4-6')
 # draw_graph('4-5')
@@ -26,3 +26,10 @@ def draw_graph(edge_list_file, dir = u'/home/chen/MA_python/multi-comodity/Graph
 # draw_graph('4-5-2')
 # draw_graph('4-6-2')
 draw_graph('4-5-v3')
+draw_graph('4-5-1')
+draw_graph('4-5-2')
+draw_graph('4-6-1')
+draw_graph('4-6-2')
+draw_graph('5-6')
+draw_graph('6-5')
+draw_graph('6-8')
