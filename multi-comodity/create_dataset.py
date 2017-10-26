@@ -37,7 +37,7 @@ def create_datset(number_of_trials, graph):
 
     return x_data[1:counter+1, ], y_data[1:counter+1, ]
 
-graph = '4-5-v3'
+graph = '5-14'
 
 graph_root = u'/home/chen/MA_python/multi-comodity/Graphs/'
 graph_dir = graph_root + graph
